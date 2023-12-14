@@ -3,7 +3,8 @@
 - 🌱 I’m currently learning ...Computer Science at Bilkent University
 - 💞️ I’m looking to collaborate on ...my classmates and my collegaues in future
 - 📫 How to reach me ...mehmetefemutlu7@gmail.com or via my personal number 05531324008
-- I am eager to learn coding and programming 
+- I am eager to learn coding and programming
+- I want to become a professional programmer
 - 
 
 <!---
