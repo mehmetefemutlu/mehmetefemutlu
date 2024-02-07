@@ -5,7 +5,7 @@ import java.util.Scanner;
  * Student Number: Mehmet Efe Mutlu
  * Student ID: 22303326
  */
-public class Lab03_Q3 
+public class lab03_Q3 
 {
     public static void main(String[] args) 
     { 

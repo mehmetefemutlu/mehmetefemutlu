@@ -3,7 +3,7 @@
  * 22303326
  * This program compares two different algortihms'time intervals.
  */
-public class homework 
+public class Homework 
 {
     public static void main(String[] args) 
     {
