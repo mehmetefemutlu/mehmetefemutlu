@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Polynomial
  */
@@ -109,11 +111,34 @@ public class Polynomial {
         return new Polynomial(sub);
     }
 
+    //Multiplies the two Polynomial and returns the result as new Polynomial
     public Polynomial mul(Polynomial p2){
-        return null;
+        //Assigns the lengths of the Polynomials
+        int max = (list(this,p2))[0].coefficients.length;
+        int min = (list(this,p2))[1].coefficients.length;
+
+        double [] mul = new double[coefficients.length + p2.coefficients.length -1];
+
+        //Fills the array accordingly
+        for(int i=0; i<max; i++){
+            for(int j=0; j<min; j++){
+                mul[i+j] += coefficients[i]*p2.coefficients[j];
+                
+            }
+        }
+        return new Polynomial(mul);
     }
 
     public Polynomial compose(Polynomial p2){
+
+        Polynomial temp = new Polynomial(new ArrayList<>());
+        
+
+        double [] comp = new double[coefficients.length];
+
+        for(int i=0; i<coefficients.length; i++){
+           
+        }
         return null;
     }
 

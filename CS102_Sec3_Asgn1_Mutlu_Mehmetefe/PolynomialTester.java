@@ -41,5 +41,13 @@ public class PolynomialTester {
         //Tests the addittion,substraction and multiplication methods
         System.out.println(p3.add(p4));
         System.out.println(p3.sub(p4));
+        System.out.println(p3.mul(p4));
+
+
+        System.out.print("{");
+        for(int i=0; i<(p2.findEqual(p3)).length; i++){
+            System.out.print((p2.findEqual(p2))[i] + " ,");
+        }
+        System.out.println("}");
     }
 }
