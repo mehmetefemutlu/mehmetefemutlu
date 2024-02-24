@@ -6,13 +6,15 @@ public class PolynomialTester {
 
         //Coefficients 
         double [] factors = {3,12,-7,9};
-        double [] factors2 = {4,2,8};
+        double [] factors2 = {2,5,2};
+        double [] factors3 = {1,1};
+        
 
         //Creates polynomial objects
         Polynomial p1 = new Polynomial();
         Polynomial p2 = new Polynomial(1, 2);
-        Polynomial p3 = new Polynomial(factors);
-        Polynomial p4 = new Polynomial(factors2);
+        Polynomial p3 = new Polynomial(factors2);
+        Polynomial p4 = new Polynomial(factors3);
 
         //Tests the zero polynomial
         System.out.println(p1);
@@ -43,11 +45,10 @@ public class PolynomialTester {
         System.out.println(p3.sub(p4));
         System.out.println(p3.mul(p4));
 
+        //Tests the composition and division methods
+        System.out.println(p3.compose(p4));
 
-        System.out.print("{");
-        for(int i=0; i<(p2.findEqual(p3)).length; i++){
-            System.out.print((p2.findEqual(p2))[i] + " ,");
-        }
-        System.out.println("}");
+
+       
     }
 }

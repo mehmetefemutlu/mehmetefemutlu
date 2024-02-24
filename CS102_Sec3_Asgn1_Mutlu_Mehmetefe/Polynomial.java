@@ -129,17 +129,33 @@ public class Polynomial {
         return new Polynomial(mul);
     }
 
+    //Composes the two Polynomial and returns the result as new Polynomial
     public Polynomial compose(Polynomial p2){
-
-        Polynomial temp = new Polynomial(new ArrayList<>());
+        //Creates a new Polynomial and adds the first term to it
+        Polynomial p0 = new Polynomial();
+        p0.coefficients[0] = this.coefficients[0];
         
-
-        double [] comp = new double[coefficients.length];
-
-        for(int i=0; i<coefficients.length; i++){
-           
+        //Iterates over the length of Polynomial
+        for(int i=1; i<coefficients.length; i++){
+            //Creates a temporary Polynomial and assigns it to the Polynomial to be composed
+            Polynomial p = new Polynomial();
+            p = p.add(p2);
+            //Assigns the i to a temporary position and multiplies p with itself i-1 many times
+            int pos = i;
+            while(i>1){
+                p = p.mul(p2);
+                i--;
+            }
+            //After that gives i it's old value
+            i = pos;
+            //Multiplies the new p's coefficients with the coefficients of this Polynomial
+            for(int j=0; j<p.coefficients.length; j++){
+                p.coefficients[j] *= coefficients[i];
+            }
+            //Adds the p to the p0(result Polynomial)
+            p0 = p0.add(p);       
         }
-        return null;
+        return p0;       
     }
 
     public Polynomial div(Polynomial p2){
