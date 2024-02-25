@@ -25,16 +25,13 @@ public class Polynomial {
         coefficients = factors;
     }
 
-    //Takes a degree and returns te term with that degree
-    public String getTerm(int d){
+    //Takes a degree and returns the coefficient of that degree
+    public double getCoefficient(int d){
         if(d<coefficients.length){
-            String result = "" + coefficients[d];
-            if(d!=0){
-                result += "x^" + d;
-            } 
+            double result = coefficients[d];
             return result;
         }
-        return null;
+        return 0.0;
     }
 
     //Returns the highest coefficient's degree
@@ -73,57 +70,36 @@ public class Polynomial {
 
     //Adds the two Polynomial and returns the result as new Polynomial
     public Polynomial add(Polynomial p2){
-        //Assigns the lengths of the Polynomials
-        int max = (list(this,p2))[0].coefficients.length;
-        int min = (list(this,p2))[1].coefficients.length;
-
+        //Defines the new array with the length of the longer one
+        int max = Math.max(coefficients.length,p2.coefficients.length);
         double [] add = new double[max];
-        
-        //Fills the array accordingly
+
+        //Adds the coefficients of the ith degrees to the new coefficients array
         for(int i=0; i<max; i++){
-            if(i<min){
-                add[i] = (list(this, p2))[0].coefficients[i] + (list(this, p2))[1].coefficients[i];
-            }
-            else{
-                add[i] = (list(this, p2))[0].coefficients[i];
-            }
-        }   
+            add[i] = this.getCoefficient(i) + p2.getCoefficient(i);
+        }
         return new Polynomial(add);
     }
 
     //Substracts the two Polynomial and returns the result as new Polynomial
     public Polynomial sub(Polynomial p2){
-        //Assigns the lengths of the Polynomials
-        int max = (list(this,p2))[0].coefficients.length;
-        int min = (list(this,p2))[1].coefficients.length;
-
-        double [] sub = new double[max];
-        
-        //Fills the array accordingly
-        for(int i=0; i<max; i++){
-            if(i<min){
-                sub[i] = (list(this, p2))[0].coefficients[i] - (list(this, p2))[1].coefficients[i];
-            }
-            else{
-                sub[i] = (list(this, p2))[0].coefficients[i];
-            }
-        }   
-        return new Polynomial(sub);
+        //Takes additive inverse of p2 adds it to the given Polyomial
+        Polynomial p = new Polynomial(0,-1);
+        p2 = p2.mul(p);
+        return p2.add(this);
     }
 
     //Multiplies the two Polynomial and returns the result as new Polynomial
     public Polynomial mul(Polynomial p2){
         //Assigns the lengths of the Polynomials
-        int max = (list(this,p2))[0].coefficients.length;
-        int min = (list(this,p2))[1].coefficients.length;
-
+        int max = Math.max(coefficients.length,p2.coefficients.length);
+        int min = Math.min(coefficients.length,p2.coefficients.length);
         double [] mul = new double[coefficients.length + p2.coefficients.length -1];
 
         //Fills the array accordingly
         for(int i=0; i<max; i++){
             for(int j=0; j<min; j++){
-                mul[i+j] += coefficients[i]*p2.coefficients[j];
-                
+                mul[i+j] += coefficients[i]*p2.coefficients[j];  
             }
         }
         return new Polynomial(mul);
@@ -146,12 +122,10 @@ public class Polynomial {
                 p = p.mul(p2);
                 i--;
             }
-            //After that gives i it's old value
             i = pos;
-            //Multiplies the new p's coefficients with the coefficients of this Polynomial
-            for(int j=0; j<p.coefficients.length; j++){
-                p.coefficients[j] *= coefficients[i];
-            }
+            //Multiplies with the coefficient
+            Polynomial p1 = new Polynomial(0,coefficients[i]);
+            p = p.mul(p1);
             //Adds the p to the p0(result Polynomial)
             p0 = p0.add(p);       
         }
@@ -162,8 +136,26 @@ public class Polynomial {
         return null;
     }
 
+    //Searches and finds the range the common values x that makes this Polynomial equal to p2.
     public int [] findEqual(Polynomial p2){
-        return null;
+        //Creates a zero Polynomial and assigns it to a the difference of this and p2
+        Polynomial p3 = new Polynomial();
+        p3 = p3.add(this.sub(p2));
+        ArrayList<Integer> arrList = new ArrayList<Integer>();
+
+        //Searches in the range of [1,200] to find common x values
+        for(int i=1; i<=200; i++){
+            if(p3.eval(i)==0){
+                arrList.add(i);
+            }
+        }
+
+        //Assigns the values in the ArrayList to the Array
+        int [] values = new int[arrList.size()];
+        for(int i=0; i<arrList.size(); i++){
+            values[i] = arrList.get(i);
+        }
+        return values;
     }
 
     //Returns the String representation of polynomial (Overriding)
@@ -181,7 +173,7 @@ public class Polynomial {
             if(coefficients[i]!=0){
                 //Adds + when coefficient is positive
                 if(coefficients[i]>0){
-                    result += " + ";
+                    result += "+";
                 }
                 result += coefficients[i];
                 //Skips the term with zero degree
@@ -191,21 +183,6 @@ public class Polynomial {
             }
         }
         return result;   
-    }
-
-    //Support method that lists the given Polynomials according to their lengths
-    private Polynomial [] list(Polynomial p1, Polynomial p2){
-        Polynomial [] arr = new Polynomial[2];
-
-        if(p1.coefficients.length<=p2.coefficients.length){
-            arr[0] = p2;
-            arr[1]  =p1;
-        }
-        else{
-            arr[0] = p1;
-            arr[1] = p2;
-        }
-        return arr;
     }
 }
 

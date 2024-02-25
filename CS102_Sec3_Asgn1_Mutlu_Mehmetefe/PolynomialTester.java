@@ -6,8 +6,8 @@ public class PolynomialTester {
 
         //Coefficients 
         double [] factors = {3,12,-7,9};
-        double [] factors2 = {2,5,2};
-        double [] factors3 = {1,1};
+        double [] factors2 = {-4,-3,1};
+        double [] factors3 = {11,-1};
         
 
         //Creates polynomial objects
@@ -18,7 +18,7 @@ public class PolynomialTester {
 
         //Tests the zero polynomial
         System.out.println(p1);
-        System.out.println(p1.getTerm(0));        
+        System.out.println(p1.getCoefficient(0));        
         System.out.println(p1.getDegree());
         System.out.println(p1.eval(2));
         System.out.println(p1.eval2(2));
@@ -26,7 +26,7 @@ public class PolynomialTester {
 
         //Tests the one-term polynomial
         System.out.println(p2);
-        System.out.println(p2.getTerm(1));        
+        System.out.println(p2.getCoefficient(1));        
         System.out.println(p2.getDegree());
         System.out.println(p2.eval(2));
         System.out.println(p2.eval2(2));
@@ -34,7 +34,7 @@ public class PolynomialTester {
         
         //Tests the poli-term polynomial
         System.out.println(p3);
-        System.out.println(p3.getTerm(0));        
+        System.out.println(p3.getCoefficient(0));        
         System.out.println(p3.getDegree());
         System.out.println(p3.eval(4));
         System.out.println(p3.eval2(4));
@@ -49,6 +49,14 @@ public class PolynomialTester {
         System.out.println(p3.compose(p4));
 
 
+        //Tests the findEqual method
+        if(p3.findEqual(p4).length!=0){
+            System.out.print("{" + p3.findEqual(p4)[0]);
+            for(int i=1; i<p3.findEqual(p4).length; i++){
+                System.out.print("," + p3.findEqual(p4)[i]);
+            }
+            System.out.println("}");
+        }
        
     }
 }
