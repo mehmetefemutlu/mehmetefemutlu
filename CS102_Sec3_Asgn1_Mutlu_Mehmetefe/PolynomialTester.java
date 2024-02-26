@@ -5,15 +5,15 @@ public class PolynomialTester {
     public static void main(String[] args) {
 
         //Coefficients 
-        double [] factors = {3,12,-7,9};
+        double [] factors = {3,4,1,3,0,2};
         double [] factors2 = {-4,-3,1};
-        double [] factors3 = {11,-1};
+        double [] factors3 = {2,1};
         
 
         //Creates polynomial objects
         Polynomial p1 = new Polynomial();
         Polynomial p2 = new Polynomial(1, 2);
-        Polynomial p3 = new Polynomial(factors2);
+        Polynomial p3 = new Polynomial(factors);
         Polynomial p4 = new Polynomial(factors3);
 
         //Tests the zero polynomial
@@ -47,12 +47,14 @@ public class PolynomialTester {
 
         //Tests the composition and division methods
         System.out.println(p3.compose(p4));
+        System.out.println(p3.div(p4));
 
 
         //Tests the findEqual method
         if(p3.findEqual(p4).length!=0){
             System.out.print("{" + p3.findEqual(p4)[0]);
             for(int i=1; i<p3.findEqual(p4).length; i++){
+                if(p3.findEqual(p4)[i]!=0)
                 System.out.print("," + p3.findEqual(p4)[i]);
             }
             System.out.println("}");
