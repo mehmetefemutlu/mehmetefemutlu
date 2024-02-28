@@ -7,7 +7,7 @@ public class PolynomialTester {
         //Coefficients 
         double [] factors = {3,4,1,3,0,2};
         double [] factors2 = {-4,-3,1};
-        double [] factors3 = {2,1};
+        double [] factors3 = {0,1};
         
 
         //Creates polynomial objects
