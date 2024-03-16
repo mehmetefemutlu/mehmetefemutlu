@@ -15,9 +15,9 @@ public class ArrayTrials {
             trial[i] = Integer.parseInt(splitted[i]);
         }
         sort(trial);
-        insert(trial, 3);
-        delete(trial, 3);
-        System.out.println(search(trial, 1));
+        //insert(trial, 3);
+        //delete(trial, 3);
+        //System.out.println(search(trial, 1));
 
 
         in.close();
@@ -26,7 +26,7 @@ public class ArrayTrials {
     public static void sort(int [] array){
         for(int i=0; i<array.length-1; i++){
             for(int j=0; j<array.length-i-1; j++){
-                if(array[j]>array[j+1]){
+                if(array[j]<array[j+1]){
                     int temp = array[j];
                     array[j] = array[j+1];
                     array[j+1] = temp; 
