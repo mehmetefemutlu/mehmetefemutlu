@@ -7,9 +7,16 @@ public class PredatorBot extends Robot {
         attack = Math.random()+2;
         speed = (Math.random()/2)+0.5;
 
+
         name = "P" + productionNumber;
     }
-
-    public void attack(Simulation s){}
+    public void attack(Simulation s){
+        Robot r = s.getHighestHealth(!isRedTeam);
+        System.out.println(displayAttack(r));;
+        
+        if(r.getHitAndDestroyed(attack)){
+            s.removeRobot(r);
+        }
+    }
     
 }

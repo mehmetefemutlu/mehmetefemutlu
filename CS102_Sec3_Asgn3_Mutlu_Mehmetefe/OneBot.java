@@ -9,6 +9,12 @@ public class OneBot extends Robot {
         
         name = "O" + productionNumber;
     }
-    public void attack(Simulation s){}
+    public void attack(Simulation s){
+        Robot r = s.getLowestHealth(!isRedTeam);
+        System.out.println(displayAttack(r));;
+        if(r.getHitAndDestroyed(attack)){
+            s.removeRobot(r);
+        }
+    }
     
 }

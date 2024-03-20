@@ -9,10 +9,13 @@ public class SimpleBot extends Robot{
 
         name = "S" + productionNumber;
     }
-
     public void attack(Simulation s){
-        
+        Robot r = s.getRandomTarget(!isRedTeam);
+        System.out.println(displayAttack(r));;
 
+        if(r.getHitAndDestroyed(attack)){
+            s.removeRobot(r);
+        }
     }
     
 }

@@ -9,7 +9,13 @@ public class SpeedBot extends Robot {
         
         name = "X" + productionNumber;
     }
-
-    public void attack(Simulation s){}
+    public void attack(Simulation s){
+        Robot r = s.getLowestAttack(!isRedTeam);
+        System.out.println(displayAttack(r));;
+        
+        if(r.getHitAndDestroyed(attack)){
+            s.removeRobot(r);
+        }
+    }
     
 }
