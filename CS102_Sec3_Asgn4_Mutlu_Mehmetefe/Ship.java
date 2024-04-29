@@ -18,7 +18,7 @@ public class Ship extends JComponent{
     public Ship(GameFrame frame){
         this.frame = frame;
         rec = new Rectangle(0, 0, SHIP_WIDTH, SHIP_HEIGHT);
-        setHealth(6);
+        setHealth(3);
         setScore(0);
     }
 

@@ -29,7 +29,7 @@ public class GamePanel extends JPanel implements ActionListener{
         createShip();
         setTitle();
 
-        t = new Timer(7, this);
+        t = new Timer(frame.getSpeed(), this);
         t.start();
     }  
 
@@ -42,8 +42,8 @@ public class GamePanel extends JPanel implements ActionListener{
     }
 
     public void createElements(){
-        elements.add(new Apple((int)(Math.random()*400)));
         elements.add(new Bomb((int)(Math.random()*400)));
+        elements.add(new Apple((int)(Math.random()*400)));
     }
 
     public void controlMovements(){
@@ -104,6 +104,7 @@ public class GamePanel extends JPanel implements ActionListener{
             else{
                 System.exit(0);
             }
+            
         }
 
     }
