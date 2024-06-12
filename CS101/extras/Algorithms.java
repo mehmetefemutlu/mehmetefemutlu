@@ -1,6 +1,4 @@
 import java.util.Arrays;
-import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.Scanner;
 
 //All details of the algorithms are explained in "Algortihms.txt"
@@ -228,7 +226,7 @@ public class Algorithms {
         for(int i=1; i<arr.length; i++){
             //Defines a current which holds the ith element
             int cur = arr[i];
-            //Defines a pointer j wihich is 0 initially
+            //Defines a pointer j which is 0 initially
             int j=i-1;
 
             //Basics of insertion sort is here
@@ -448,7 +446,7 @@ public class Algorithms {
         int right = high;
 
         //Makes sure that they do not cross
-        while(left<high){
+        while(left<right){
             //Keeps incrementing leftPointer until it reaches an element that is greater than pivot
             while(arr[left]<pivot && left<right){
                 left++;
